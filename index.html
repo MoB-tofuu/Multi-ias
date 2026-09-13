@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0b131e">
+  <title>Rift Pick AI</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div>
+        <span class="eyebrow">AI WEB ASSISTANT</span>
+        <h1>Rift Pick <span>AI</span></h1>
+      </div>
+      <button id="settingsBtn" class="icon-btn" aria-label="Configuración">⚙</button>
+    </header>
+
+    <section class="card project-card">
+      <div class="section-title">
+        <div>
+          <span class="label">PROYECTO</span>
+          <h2 id="projectName">Ningún proyecto</h2>
+        </div>
+        <span id="fileCount" class="badge">0 archivos</span>
+      </div>
+      <p id="projectStatus" class="muted">Carga una carpeta o archivos de Rift Pick para comenzar.</p>
+      <input id="projectInput" type="file" webkitdirectory directory multiple hidden>
+      <button id="openProjectBtn" class="primary-btn">📁 Abrir proyecto</button>
+    </section>
+
+    <section class="card">
+      <div class="section-title">
+        <div>
+          <span class="label">TAREA PARA LA IA</span>
+          <h2>¿Qué quieres hacer?</h2>
+        </div>
+      </div>
+
+      <textarea id="promptInput"
+        placeholder="Ejemplo: Haz que el selector de campeones se vea mejor en móvil..."
+        maxlength="2000"></textarea>
+
+      <div class="quick-actions">
+        <button class="chip" data-prompt="Revisa la estructura del proyecto y dime qué mejorarías.">🔎 Revisar</button>
+        <button class="chip" data-prompt="Propón mejoras visuales para móviles sin cambiar la funcionalidad.">🎨 Diseño</button>
+        <button class="chip" data-prompt="Busca posibles errores en el código y explícame cómo corregirlos.">🐛 Errores</button>
+      </div>
+
+      <button id="runBtn" class="primary-btn large">✨ Analizar tarea</button>
+    </section>
+
+    <section class="card files-card">
+      <div class="section-title">
+        <div>
+          <span class="label">ARCHIVOS</span>
+          <h2>Proyecto actual</h2>
+        </div>
+      </div>
+      <div id="fileList" class="file-list">
+        <div class="empty">Todavía no hay archivos cargados.</div>
+      </div>
+    </section>
+
+    <section id="resultCard" class="card result-card hidden">
+      <div class="section-title">
+        <div>
+          <span class="label">RESULTADO</span>
+          <h2>Propuesta de cambios</h2>
+        </div>
+        <span id="resultBadge" class="badge success">Listo</span>
+      </div>
+      <div id="resultContent"></div>
+      <div class="result-actions">
+        <button id="clearResultBtn" class="secondary-btn">Cerrar</button>
+        <button id="applyBtn" class="primary-btn" disabled>Aplicar cambios</button>
+      </div>
+    </section>
+
+    <footer>
+      <span id="statusDot" class="status-dot"></span>
+      <span id="statusText">Modo local · Sin IA conectada</span>
+    </footer>
+  </main>
+
+  <div id="settingsModal" class="modal hidden">
+    <div class="modal-box">
+      <button id="closeSettingsBtn" class="close-btn">×</button>
+      <span class="label">CONFIGURACIÓN</span>
+      <h2>Rift Pick AI</h2>
+      <p class="muted">La V1 funciona en modo local. La conexión a una IA se añadirá después.</p>
+      <div class="setting-row">
+        <span>Modo seguro</span>
+        <span class="badge success">ACTIVO</span>
+      </div>
+      <div class="setting-row">
+        <span>Backup antes de cambios</span>
+        <span class="badge success">ACTIVO</span>
+      </div>
+      <div class="setting-row">
+        <span>Proveedor IA</span>
+        <span class="badge">No conectado</span>
+      </div>
+      <button id="closeSettingsBtn2" class="secondary-btn full">Cerrar</button>
+    </div>
+  </div>
+
+  <script src="js/project.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
